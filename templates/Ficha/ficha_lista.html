@@ -1,0 +1,89 @@
+{% extends 'Ficha/base.html' %}
+{% block titulo %}
+    Fichas
+{% endblock %}
+{% block main %}
+<!--        You can switch " data-color="rose" "  with one of the next bright colors: "blue", "green", "orange", "purple"        -->
+
+    <div class="wizard-header">
+        <h3 class="wizard-title">
+            Fichas
+        </h3>
+    </div>
+    <div class="wizard-navigation">
+        <ul>
+            <li><a href="#jogador" data-toggle="tab">jogador</a></li>
+            <li><a href="#npc" data-toggle="tab">NPC</a></li>
+        </ul>
+    </div>
+
+    <div class="tab-content">
+        <div class="tab-pane" id="jogador">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4 class="info-text"> Lista de Jogadores</h4>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Personagem</th>
+                            <th scope="col">Raça</th>
+                            <th scope="col">lvl</th>
+                            <th scope="col">ver mais</th>
+                        </tr>
+                    </thead>
+                    <tbody class="list-group">
+                    {% for a in Fichas_jogador %}
+                        <tr>
+                            <td>{{ a.nomePersonagem }}</td>
+                            <td>{{ a.raca }}</td>
+                            <td>{{ a.classe }}</td>
+                            <td>
+                                <a href="{% url 'post_detail' a.id %}">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-right-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.879 10.828a.5.5 0 1 1-.707-.707l4.096-4.096H6.5a.5.5 0 0 1 0-1h3.975a.5.5 0 0 1 .5.5V9.5a.5.5 0 0 1-1 0V6.732l-4.096 4.096z"></path>
+                                    </svg>
+                            </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane" id="npc">
+                <div class="col-sm-12">
+                    <h4 class="info-text"> Lista de Npcs</h4>
+                </div>
+            <div class="row">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Personagem</th>
+                            <th scope="col">Raça</th>
+                            <th scope="col">lvl</th>
+                            <th scope="col">ver mais</th>
+                        </tr>
+                    </thead>
+                    <tbody class="list-group">
+                        {% for a in Fichas_npc %}
+                            <tr>
+                                <td>{{ a.nomePersonagem }}</td>
+                                <td>{{ a.raca }}</td>
+                                <td>{{ a.classe }}</td>
+                                <td>
+                                    <a href="{% url 'post_detail' a.id %}">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-right-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.879 10.828a.5.5 0 1 1-.707-.707l4.096-4.096H6.5a.5.5 0 0 1 0-1h3.975a.5.5 0 0 1 .5.5V9.5a.5.5 0 0 1-1 0V6.732l-4.096 4.096z"></path>
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="wizard-footer">
+            <div class="clearfix"></div>
+        </div>
+    </div>
+{% endblock %}
